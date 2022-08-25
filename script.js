@@ -1,4 +1,4 @@
-import {highlight, reset} from './rating-buttons.js';
+import {highlight, reset, hoverEffect} from './rating-buttons.js';
 
 let rating = '5';
 let bubbles = document.querySelectorAll('.rating-bubble');
@@ -9,13 +9,18 @@ class RatingButton {
   constructor(ratingEl){
     this.value = ratingEl.textContent;
     this.clicked = false;
-    ratingEl.addEventListener('click',this.update);
+    ratingEl.addEventListener('click', this.update);
+    ratingEl.addEventListener('mouseover', ()=>this.onHover);
   }
 
   update(){
     reset(this, bubbles);
     highlight(this, rating);
     rating = this.textContent;
+  }
+  
+  onHover(){
+    hoverEffect(this);
   }
 }
 

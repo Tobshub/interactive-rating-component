@@ -14,12 +14,15 @@
   --color-primary-dark: hsl(213, 19%, 18%);
   --color-primary-vdark: hsl(216, 12%, 8%);
   --color-neutral-highlight: hsla(217, 12%, 63%, 0.1);
+  --color-neutral-hover: hsla(217, 12%, 90%, 0.3);
 }
 
 body  {
   height: 100vh;
   width: 100vw;
-  
+}
+.rating-cmpnt {
+  font-family: 'Overpass', Arial, Helvetica, sans-serif;
 }
 
 @media (max-width: 600px){
@@ -31,7 +34,6 @@ body  {
   }
 
   .rating-cmpnt {
-    font-family: 'Overpass', Arial, Helvetica, sans-serif;
     height: 50%;
     width: calc(100% - 14vw);
     background-color: var(--color-primary-dark);
@@ -73,6 +75,7 @@ body  {
     display: flex;
     align-items: center; justify-content: center;
     background-color: var(--color-neutral-highlight);
+    transition: 100ms ease;
   }
 
   .rating-cmpnt-submit {
@@ -85,4 +88,66 @@ body  {
     font-size: 15px; font-weight: 700;
     letter-spacing: 3px;
   }
+  .rating-cmpnt-submit:focus, .rating-cmpnt-submit:active {
+    background-color: var(--color-neutral-100);
+    color: var(--color-primary-accent);
+  }
+}
+
+@media (min-width: 600px) {
+  body {
+    background-color: var(--color-primary-vdark);
+    display: grid;
+    place-items: center;
+  }
+  .rating-cmpnt {
+    width: 28vw;
+    height: 50vh;
+    background-color: var(--color-primary-dark);
+    border-radius: 20px;
+    padding: 4vh;
+  }
+  #star-icon {
+    background-color: var(--color-neutral-highlight);
+    border-radius: 50%;
+    padding: 1vw;
+  }
+  .rating-cmpnt-heading {
+    color: var(--color-neutral-100);
+    margin: 3vh 0;
+    font-size: 1.9vw;
+  }
+  .rating-cmpnt-body {
+    font-size: 1.05vw;
+    line-height: 1.4vw;
+    color: var(--color-neutral-60);
+  }
+
+  .ratings {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 4vh 0;
+  }
+
+  .rating-bubble {
+    background-color: var(--color-neutral-highlight);
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    width: 5vmin;
+    color: var(--color-neutral-60);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 100ms ease;
+  }
+  .rating-bubble:hover, .rating-bubble.focus {
+    cursor: pointer;
+    background-color: var(--color-neutral-60);
+    color: var(--color-neutral-100);
+  }
+
+  /* .rating-cmpnt-submit{
+    
+  } */
 }
